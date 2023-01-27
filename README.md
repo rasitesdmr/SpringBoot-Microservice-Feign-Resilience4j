@@ -218,7 +218,9 @@ eureka.client.register-with-eureka=true
   kapasite kullanımını en üst düzeye çıkaracak şekilde bu istekleri yerine getirebilecek tüm sunucular arasında
   yönlendirir ve performansı düşürebilecek şekilde hiçbir sunucuya aşırı iş yüklenmemesini sağlar.
 
+<p align="center">
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/load/load2.png" align="center"> 
+</p>
 
 * Tek bir sunucu devre dışı kalırsa, yük dengeleyici trafiği kalan çevrimiçi sunuculara yönlendirir.
 * Sunucu grubuna yeni bir sunucu eklendiğinde, yük dengeleyici otomatik olarak istekleri bu sunucuya göndermeye başlar.
@@ -284,7 +286,9 @@ public interface DepartmentFeignClient {
 
 * @FeignClient department-service ismindeki servise Get isteği atacaktır.
 
+<p align="center">
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/feign/open2.png" align="center">
+</p>
 
 * user-service hizmetinden 1 numaralı id'ye sahip kullanıcının bilgilerini ve department bilgilerini çektim.
 
@@ -394,7 +398,9 @@ public interface DepartmentFeignClient {
 
 * Circuit Breakers’ın üç durumu vardır. Bu durumlar: Açık (Open), Kapalı (Closed) ve Yarı-Açık (Half-Open).
 
+<p align="center">
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res1.png" align="center">
+</p>
 
 ### Closed
 
