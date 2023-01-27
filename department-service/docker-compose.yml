@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+
+  postgresql:
+    container_name: departmentPostgresDB
+    image: postgres:10.4
+    ports:
+      - "5433:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: department_db
+    networks:
+      - comment
+
+networks:
+  comment:
+    driver: bridge
