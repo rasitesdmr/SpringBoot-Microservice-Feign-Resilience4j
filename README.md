@@ -1,6 +1,6 @@
 # 🎯 Eureka Service Registry Nedir ?
 
-<img src="s3">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/eureka/s3.png">
 
 * Bugünlerde bildiğimiz gibi, Microservice'ler etrafında çok fazla ivme var.
 
@@ -162,7 +162,7 @@ eureka.client.register-with-eureka=true
 
   ▶️eureka-server : http://localhost:8761/
 
-<img src="s2">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/eureka/s2.png">
 
 # 🎯 OpenFeign Nedir ?
 
@@ -195,7 +195,7 @@ eureka.client.register-with-eureka=true
 
 # 🎯 Load Balancer Nedir ?
 
-<img src="load1"> 
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/load/load1.png"> 
 
 * Yük dengeleme (load balancing), gelen ağ trafiğini sunucu çiftliği veya sunucu havuzu olarak da bilinen bir grup arka
   uç sunucusu arasında verimli bir şekilde dağıtmayı ifade eder.
@@ -214,7 +214,7 @@ eureka.client.register-with-eureka=true
   kapasite kullanımını en üst düzeye çıkaracak şekilde bu istekleri yerine getirebilecek tüm sunucular arasında
   yönlendirir ve performansı düşürebilecek şekilde hiçbir sunucuya aşırı iş yüklenmemesini sağlar.
 
-<img src="load2"> 
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/load/load2.png"> 
 
 * Tek bir sunucu devre dışı kalırsa, yük dengeleyici trafiği kalan çevrimiçi sunuculara yönlendirir.
 * Sunucu grubuna yeni bir sunucu eklendiğinde, yük dengeleyici otomatik olarak istekleri bu sunucuya göndermeye başlar.
@@ -280,7 +280,7 @@ public interface DepartmentFeignClient {
 
 * @FeignClient department-service ismindeki servise Get isteği atacaktır.
 
-<img src="open2">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/feign/open2.png">
 
 * user-service hizmetinden 1 numaralı id'ye sahip kullanıcının bilgilerini ve department bilgilerini çektim.
 
@@ -390,7 +390,7 @@ public interface DepartmentFeignClient {
 
 * Circuit Breakers’ın üç durumu vardır. Bu durumlar: Açık (Open), Kapalı (Closed) ve Yarı-Açık (Half-Open).
 
-<img src="res1">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res1.png">
 
 ### Closed
 
@@ -409,7 +409,7 @@ public interface DepartmentFeignClient {
   belirli sayıda (veya oranda) çağrının gerçekleştirilmesine izin verilir. Eğer hatalı çağrıların oranı (veya sayısı)
   belirli bir sayının üzerinde olursa, tekrardan açık konuma geçilir; aksi takdirde sigorta tamamen kapatılır.
 
-<img src="res2">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res2.png">
 
 # 🎯 Şimdi Gelelim Resilience4j Projemize Nasıl Ekleyeceğimize ?
 
@@ -524,26 +524,26 @@ feign.circuitbreaker.enabled=true
 
 # 🎯 Şimdi Gelelim Bunlar Nasıl Çalışıyor ?
 
-<img src="res4">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res4.png">
 
 * İlk başta user-service ve department-service hizmetlerim ayakta ve sıkıntısız çalışıyor.
 * Yukarıda görüldüğü gibi CircuitBreaker closed durumunda.
 
-<img src="res5">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res5.png">
 
 * Ben department-service hizmetimi çökertsem user-service hizmetim department bilgilerini alamıyacak.
 * properties dosyasında CircuitBreaker tetiklenmesi için 5 istek alması gerekiyor.
 * 5 tane istek attığımda circuitBreaker OPEN durumuna geçiyor.
 * 5 saniye istek atmadan beklersem circuitBreaker HALF-OPEN durumuna geçecek.
 
-<img src="res6">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res6.png">
 
 * Burda HALF-OPEN durumu ya OPEN durumuna ya da CLOSED durumuna geçmesi gerekiyor.
 * Bunuda properties dosyasında 3 tane istek atıp eğer 3 isteğin 2 si başarısızsa OPEN durumuna başarılıysa CLOSED
   durumuna geçmesini söylüyoruz.
 * Başarısız istek atarsam.
 
-<img src="res7">
+<img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res7.png">
 
 # 🎯 Link 
 
