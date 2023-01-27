@@ -197,7 +197,9 @@ eureka.client.register-with-eureka=true
 
 # 🎯 Load Balancer Nedir ?
 
+<p align="center">
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/load/load1.png" align="center"> 
+</p>
 
 * Yük dengeleme (load balancing), gelen ağ trafiğini sunucu çiftliği veya sunucu havuzu olarak da bilinen bir grup arka
   uç sunucusu arasında verimli bir şekilde dağıtmayı ifade eder.
@@ -547,7 +549,7 @@ feign.circuitbreaker.enabled=true
 
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/resi/res7.png">
 
-# 🎯 Link 
+# 🎯 Link
 
 ▶️eureka-server : http://localhost:8761/
 
