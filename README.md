@@ -1,6 +1,8 @@
 # 🎯 Eureka Service Registry Nedir ?
 
+<p align="center">
 <img src="https://github.com/rasitesdmr/SpringBoot-Microservice-Feign-Resilience4j/blob/master/images/eureka/s3.png" align="center">
+</p>
 
 * Bugünlerde bildiğimiz gibi, Microservice'ler etrafında çok fazla ivme var.
 
