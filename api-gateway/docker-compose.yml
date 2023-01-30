@@ -1,0 +1,31 @@
+version: '3'
+services:
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin:latest
+    environment:
+      # Scribe günlük kaydını ayarlar. Scribe büyük miktarda günlük verisini işlemek için tasarlanmış bir günlük çerçevesidir.
+      - SCRIBE_ENABLED=true
+      # Kendini izleme,Zipkin hizmetinin kendi davranışınıda izleyeceği anlamına gelir, bu da hata ayıklama ve performans analizi için yararlı olabilir.
+      #- SELF_TRACING_ENABLED=true
+      #Günlük tutma seviyesini debug olarak ayarlar.
+      - JAVA_OPTS=-Dlogging.level.zipkin2=DEBUG
+    ports:
+      - '9411:9411'
+
+  # Container giriş noktası -f seçeneği ile crond komutunu çalıştıracak şekilde ayarlanmıştır.
+  # Crond arka planda çalışan ve belirtilen komutları belirtilen aralıklarla çalıştıran bir daemon dur.
+  # f seçeneği crondun ön planda çalışmasına neden olur, böylece daemon için günlükler container günlüklerinde görülebilir.
+  # Bu , izleme ve hata ayıklama amaçları için kullanışlıdır.
+
+  dependencies:
+    image: openzipkin/zipkin-dependencies
+    container_name: dependencies
+    entrypoint: crond -f
+    environment:
+      - ZIPKIN_LOG_LEVEL=DEBUG
+
+      #-verbose:gc  JVM'nin çöp toplama hakkında ayrıntılı bilgileri günlüğe kaydetmesine neden olur. Bu performans analizi ve ayarlama için yararlı olablir.
+      #-Xms1G  JVM için başlangıç yığın boyutunu 1GB olarak ayarlar. Yığın JVM'nin nesnelerine depolandığı alandır.
+      #-Xmx1G JVM için maksimum yığın boyutunu 1GB olarak ayarlar. Bu, JVM'nin kullanabileceği bellek sınırı için bir üst sınır belirler.
+      - JAVA_OPTS=-verbose:gc -Xms1G -Xmx1G
