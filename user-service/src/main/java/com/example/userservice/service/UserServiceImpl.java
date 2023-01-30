@@ -1,5 +1,6 @@
 package com.example.userservice.service;
 
+import com.example.userservice.exception.FirstAndLastNameAlreadyExistsException;
 import com.example.userservice.feignClients.DepartmentFeignClient;
 import com.example.userservice.mapper.UserMapper;
 import com.example.userservice.model.User;
@@ -24,7 +25,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse createUser(UserCreateRequest userCreateRequest) {
+
         User user = userMapper.userCreateRequestToUser(userCreateRequest);
+        if (userRepository.existsByFirstName(user.getFirstName()) &&
+                userRepository.existsByLastName(user.getLastName())) {
+            throw new FirstAndLastNameAlreadyExistsException("Zaten Mevcut");
+        }
         user = userRepository.save(user);
 
         UserResponse userResponse = new UserResponse(user);
