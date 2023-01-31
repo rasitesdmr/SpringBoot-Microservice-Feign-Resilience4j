@@ -1,10 +1,12 @@
 package com.example.userservice.exception;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class ExceptionMessage{
 
     private String timestamp;

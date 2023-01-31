@@ -12,4 +12,8 @@ public class ErrorResponse {
     public ResponseEntity<?> handle(FirstAndLastNameAlreadyExistsException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(DepartmentNotFoundException.class)
+    public ResponseEntity<ExceptionMessage> handle(DepartmentNotFoundException exception) {
+        return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().getStatus()));
+    }
 }

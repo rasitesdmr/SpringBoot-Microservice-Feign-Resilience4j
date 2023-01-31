@@ -1,5 +1,6 @@
 package com.example.departmentservice.service;
 
+import com.example.departmentservice.exception.DepartmentNotFoundException;
 import com.example.departmentservice.mapper.DepartmentMapper;
 import com.example.departmentservice.model.Department;
 import com.example.departmentservice.repository.DepartmentRepository;
@@ -7,6 +8,7 @@ import com.example.departmentservice.request.DepartmentRequest;
 import com.example.departmentservice.response.DepartmentResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -33,7 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getDepartmentById(Long id) {
-        return departmentRepository.findById(id).orElseThrow();
+        return departmentRepository.findById(id).orElseThrow(()-> new DepartmentNotFoundException("Not Found"));
     }
 
 
