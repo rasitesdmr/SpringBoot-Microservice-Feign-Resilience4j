@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ErrorResponse {
     @ExceptionHandler(FirstAndLastNameAlreadyExistsException.class)
     public ResponseEntity<?> handle(FirstAndLastNameAlreadyExistsException exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
     }
     @ExceptionHandler(DepartmentNotFoundException.class)
-    public ResponseEntity<ExceptionMessage> handle(DepartmentNotFoundException exception) {
-        return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().getStatus()));
+    public ResponseEntity<?> handle(DepartmentNotFoundException exception) {
+       // return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().getStatus()));
+          return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
 }

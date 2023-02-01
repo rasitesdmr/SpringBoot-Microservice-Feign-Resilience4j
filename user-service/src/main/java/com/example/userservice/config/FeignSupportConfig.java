@@ -7,14 +7,5 @@
 //
 //@Configuration
 //public class FeignSupportConfig {
-//    @Bean
-//    public ErrorDecoder errorDecoder() {
-//        return new RetreiveMessageErrorDecoder();
-//    }
 //
-//
-//    @Bean
-//    Logger.Level feignLoggerLevel() {
-//        return Logger.Level.FULL;
-//    }
 //}

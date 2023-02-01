@@ -16,11 +16,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-@Component
 public class RetreiveMessageErrorDecoder implements ErrorDecoder {
 
+    public int staticCode;
     private final ErrorDecoder errorDecoder = new Default();
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
 
     @Override
     public Exception decode(String methodKey, Response response) {
@@ -32,16 +35,22 @@ public class RetreiveMessageErrorDecoder implements ErrorDecoder {
                     HttpStatus.resolve(response.status()).getReasonPhrase(),
                     IOUtils.toString(body, StandardCharsets.UTF_8),
                     response.request().url());
+            staticCode=message.getStatus();
+
+            logger.info(String.valueOf(message.getStatus()));
 
         } catch (IOException exception) {
             return new Exception(exception.getMessage());
         }
-        switch (response.status()) {
-            case 404:
-                logger.info("[department-service]{} ", message);
-                 throw  new DepartmentNotFoundException(message);
-            default:
-                return errorDecoder.decode(methodKey, response);
-        }
+//        switch (response.status()) {
+//            case 404:
+//                logger.info("[department-service]{} ", message);
+//                 throw  new DepartmentNotFoundException(message);
+//            case 503:
+//                System.out.println("503");
+//            default:
+//                return errorDecoder.decode(methodKey, response);
+//        }
+        return errorDecoder.decode(methodKey, response);
     }
 }

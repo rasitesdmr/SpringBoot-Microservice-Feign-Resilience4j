@@ -6,5 +6,5 @@ import com.example.userservice.response.UserResponse;
 public interface UserService {
 
     UserResponse createUser(UserCreateRequest userCreateRequest);
-    UserResponse getById(long id);
+    UserResponse getById(long id) ;
 }

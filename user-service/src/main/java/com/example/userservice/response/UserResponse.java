@@ -21,10 +21,10 @@ public class UserResponse {
 
     private DepartmentResponse departmentResponse;
 
-    public UserResponse(User user){
-        this.id= user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.email = user.getEmail();
-    }
+//    public UserResponse(User user){
+//        this.id= user.getId();
+//        this.firstName = user.getFirstName();
+//        this.lastName = user.getLastName();
+//        this.email = user.getEmail();
+//    }
 }

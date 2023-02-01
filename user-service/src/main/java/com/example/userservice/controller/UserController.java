@@ -15,12 +15,12 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/create")
-    public UserResponse createStudent (@RequestBody UserCreateRequest userCreateRequest) {
+    public UserResponse createStudent (@RequestBody UserCreateRequest userCreateRequest) throws Exception {
         return userService.createUser(userCreateRequest);
     }
 
     @GetMapping("/{id}")
-    public UserResponse getById (@PathVariable("id") Long id) {
+    public UserResponse getById (@PathVariable("id") Long id){
         return userService.getById(id);
     }
 

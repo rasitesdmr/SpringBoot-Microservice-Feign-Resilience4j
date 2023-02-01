@@ -9,12 +9,12 @@ public class DepartmentNotFoundException extends RuntimeException {
     private  ExceptionMessage exceptionMessage;
 
 
-    public DepartmentNotFoundException(ExceptionMessage message) {
-        this.exceptionMessage = message;
-    }
-
     public DepartmentNotFoundException(String message) {
         super(message);
+    }
+
+    public DepartmentNotFoundException(ExceptionMessage exceptionMessage){
+        this.exceptionMessage= exceptionMessage;
     }
 
 
