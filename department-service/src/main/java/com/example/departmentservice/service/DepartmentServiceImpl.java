@@ -35,6 +35,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department getDepartmentById(Long id) {
+        System.out.println("Kullanıcı bilgileri alınmaya geldi");
         return departmentRepository.findById(id).orElseThrow(()-> new DepartmentNotFoundException("Not Found"));
     }
 

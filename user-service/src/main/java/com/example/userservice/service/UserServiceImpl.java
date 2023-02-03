@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         }
 //        user = userRepository.save(user);
         UserResponse userResponse = new UserResponse();
-        userResponse.setDepartmentResponse(departmentFeignClient.getById(user.getDepartmentId()));
+        userResponse.setDepartmentResponse(departmentFeignClient.createUserGetDepartmentById(user.getDepartmentId()));
 //
 //        Long departmentId = userResponse.getDepartmentResponse().getId();
 //        if(departmentId == null){
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 
     // @CircuitBreaker(name = "userService", fallbackMethod = "getDepartmentByIdFallback")
     public DepartmentResponse getDepartmentById(Long departmentId) throws IllegalArgumentException {
-        DepartmentResponse departmentResponse = departmentFeignClient.getById(departmentId);
+        DepartmentResponse departmentResponse = departmentFeignClient.getUserGetDepartmentById(departmentId);
         return departmentResponse;
     }
 

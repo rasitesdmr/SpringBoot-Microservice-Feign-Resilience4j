@@ -12,9 +12,15 @@ public class ErrorResponse {
     public ResponseEntity<?> handle(FirstAndLastNameAlreadyExistsException exception) {
         return new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
     }
+
     @ExceptionHandler(DepartmentNotFoundException.class)
     public ResponseEntity<?> handle(DepartmentNotFoundException exception) {
-       // return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().getStatus()));
-          return new ResponseEntity<>(exception.getMessage(),HttpStatus.NOT_FOUND);
+        // return new ResponseEntity<>(exception.getExceptionMessage(), HttpStatus.resolve(exception.getExceptionMessage().getStatus()));
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DepartmentServiceUnavailableException.class)
+    public ResponseEntity<?> handel(DepartmentServiceUnavailableException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
     }
 }
